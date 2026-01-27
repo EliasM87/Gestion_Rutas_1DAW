@@ -49,10 +49,13 @@ public class GestionRutas implements IGestionRutas{
 
 	@Override
 	public void eliminarRuta(int idRuta) {	
+		List<Ruta> filtradoRutas = new ArrayList<>();	
+		
 		for (Ruta r: rutas) {
-			if (r.getIdRuta() == idRuta)
-			rutas.remove(r);	
+			if (r.getIdRuta() != idRuta)
+			filtradoRutas.add(r);	
 		}
+		this.rutas = filtradoRutas;
 		
 	}
 
