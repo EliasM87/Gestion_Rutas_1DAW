@@ -118,16 +118,16 @@ public class Ruta {
 	
 	@Override
 	public String toString() {
-	    return "=== DETALLES DE LA RUTA ===\n" +
+	    return "\n" + "========== DETALLES DE LA RUTA ===========\n" +
 	           "ID Ruta:             " + idRuta + "\n" +
 	           "Fecha:               " + fecha + "\n" +
 	           "Origen:              " + origen + "\n" +
 	           "Destino:             " + destino + "\n" +
-	           "Vehículo:            " + vehiculoUsado + "\n" +
-	           "Empleado:            " + empleado + "\n" +
 	           "Km Recorridos:       " + kmRecorridos + " km\n" +
 	           "Carga Transportada:  " + cargaTransportadaKg + " kg\n" +
-	           "===========================";
+	           "Vehículo:            " + "\n" + vehiculoUsado + "\n" +
+	           "Empleado:            " + empleado + "\n"+
+	           "==========================================" + "\n";
 	}
 	
 	

@@ -82,8 +82,12 @@ public class Empleado {
 
 	@Override
 	public String toString() {
-		return "Empleado [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
-				+ ", genero=" + genero + "]";
+		return "\n" + "     ---- CONDUCTOR ----    " + "\n" +
+				"DNI:                 " + dni + "\n" +
+				"Nombre y apellidos:  " + nombreCompleto() + "\n" +
+				"Email:               " + email + "\n" +
+				"Genero:              " + literalGenero() + "\n";
+				
 	}
 	
 	public String nombreCompleto() {

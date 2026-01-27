@@ -41,9 +41,15 @@ public class Furgoneta extends Vehiculo {
 
 	@Override
 	public String toString() {
-		return "Furgoneta [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", kilometrosTotales="
-				+ kilometrosTotales + ", consumoLitros100km=" + consumoLitros100km + ", volumenCargaM3="
-				+ volumenCargaM3 + ", volumenOcupadoM3=" + volumenOcupadoM3 + "]";
+		return "       *** FURGONETA ***     \n"+
+				"Matricula:          " + matricula +"\n"+
+				"Marca:              " + marca + "\n"+
+				"Modelo:             " + modelo + "\n"+
+				"Kilometros totales: " + kilometrosTotales + "\n"+
+				"Consumo L/100:      " + consumoLitros100km + "\n"+
+				"Volumen de carga    " + volumenCargaM3 + "\n"+
+				"Volumen ocupado:    " + volumenOcupadoM3;			
+	
 	}
 
 

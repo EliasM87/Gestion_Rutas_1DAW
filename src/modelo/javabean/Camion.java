@@ -56,9 +56,18 @@ public class Camion extends Vehiculo{
 
 	@Override
 	public String toString() {
-		return "Camion [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", kilometrosTotales="
-				+ kilometrosTotales + ", consumoLitros100km=" + consumoLitros100km + ", capacidadCargaKg="
-				+ capacidadCargaKg + ", cargaOcupadaKg=" + cargaOcupadaKg + ", numeroEjes=" + numeroEjes + "]";
+		
+		return "       *** CAMION ***    \n"+
+				"Matricula:          " + matricula +"\n"+
+				"Marca:              " + marca + "\n"+
+				"Modelo:             " + modelo + "\n"+
+				"Kilometros totales: " + kilometrosTotales + "\n"+
+				"Consumo L/100:      " + consumoLitros100km + "\n"+
+				"Capacidad de carga: " + capacidadCargaKg + "\n"+
+				"Carga ocupada:      " + cargaOcupadaKg + "\n"+
+				"Numero Ejes:        " + numeroEjes;
+				
+				
 	}
 	
 	
