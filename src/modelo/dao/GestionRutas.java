@@ -33,7 +33,7 @@ public class GestionRutas implements IGestionRutas{
 		if (ruta.getVehiculoUsado() instanceof Camion c)
 			c.setCargaOcupadaKg(ruta.getCargaTransportadaKg());
 		else if (ruta.getVehiculoUsado() instanceof Furgoneta f)
-			f.setVolumenOcupadoM3(ruta.getCargaTransportadaKg() * 0);
+			f.setVolumenOcupadoM3(ruta.getCargaTransportadaKg() * 0.003);
 		
 		ruta.getVehiculoUsado().aumentarKilometraje(ruta.getKmRecorridos());
 		double incrementoConsumo = ruta.getVehiculoUsado().getPorcentajeCarga() / 20;
