@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import modelo.javabean.Camion;
 import modelo.javabean.Furgoneta;
 import modelo.javabean.Ruta;
 
@@ -27,8 +28,19 @@ public class GestionRutas implements IGestionRutas{
 	public void addRuta(Ruta ruta) {
 		rutas.add(ruta);
 		
+		//cargo el vehiculo usado, aumento kilometraje y aumento consumo (1l cada 20% de carga) al añadir la ruta
+		
+		if (ruta.getVehiculoUsado() instanceof Camion c)
+			c.setCargaOcupadaKg(ruta.getCargaTransportadaKg());
+		else if (ruta.getVehiculoUsado() instanceof Furgoneta f)
+			f.setVolumenOcupadoM3(ruta.getCargaTransportadaKg() * 0);
+		
+		ruta.getVehiculoUsado().aumentarKilometraje(ruta.getKmRecorridos());
+		double incrementoConsumo = ruta.getVehiculoUsado().getPorcentajeCarga() / 20;
+		ruta.getVehiculoUsado().setConsumoLitros100km(ruta.getVehiculoUsado().getConsumoLitros100km() + incrementoConsumo);
 	}
 
+	
 	@Override
 	public void eliminarRuta(Ruta ruta) {
 		rutas.remove(ruta);

@@ -11,7 +11,7 @@ public class Ruta {
 	private String destino;
 	private Vehiculo vehiculoUsado;
 	private Empleado empleado;
-	private double KmRecorridos;
+	private double kmRecorridos;
 	private double cargaTransportadaKg;
 	
 	public Ruta(int idRuta, LocalDate fecha, String origen, String destino, Vehiculo vehiculoUsado, Empleado empleado,
@@ -23,22 +23,12 @@ public class Ruta {
 		this.destino = destino;
 		this.vehiculoUsado = vehiculoUsado;
 		this.empleado = empleado;
-		this.KmRecorridos = kmRecorridos;
+		this.kmRecorridos = kmRecorridos;
 		this.cargaTransportadaKg = cargaTransportadaKg;
-		
-		//Cargo la mercancia en el vehiculo en el constructor
-		if(this.vehiculoUsado instanceof Camion c)
-			c.setCargaOcupadaKg(cargaTransportadaKg);
-		else if(this.vehiculoUsado instanceof Furgoneta f)
-			f.setVolumenOcupadoM3(cargaTransportadaKg * 0.003);//Conversion a M3 ficticia
-		
-		//modifico kilometraje y consumo
-		modificarKilometrosYConsumoVehiculo();
 		
 			}
 		
-	
-	
+
 
 	public Ruta() {
 		super();
@@ -93,11 +83,11 @@ public class Ruta {
 	}
 
 	public double getKmRecorridos() {
-		return KmRecorridos;
+		return kmRecorridos;
 	}
 
 	public void setKmRecorridos(double kmRecorridos) {
-		KmRecorridos = kmRecorridos;
+		this.kmRecorridos = kmRecorridos;
 	}
 
 	public double getCargaTransportadaKg() {
@@ -135,7 +125,7 @@ public class Ruta {
 	           "Destino:             " + destino + "\n" +
 	           "Vehículo:            " + vehiculoUsado + "\n" +
 	           "Empleado:            " + empleado + "\n" +
-	           "Km Recorridos:       " + KmRecorridos + " km\n" +
+	           "Km Recorridos:       " + kmRecorridos + " km\n" +
 	           "Carga Transportada:  " + cargaTransportadaKg + " kg\n" +
 	           "===========================";
 	}
@@ -147,19 +137,19 @@ public class Ruta {
 	}
 	
 	public void modificarKilometrosYConsumoVehiculo() {
-		this.vehiculoUsado.aumentarKilometraje(KmRecorridos);
+		this.vehiculoUsado.aumentarKilometraje(kmRecorridos);
 		this.vehiculoUsado.consumoLitros100km += this.getVehiculoUsado().getPorcentajeCarga()/20; //Aumenta 1L de consumo por cada 20% de carga
 	
 	}
 	
 	public String getOrigenDestino() {
-		return "Ruta con origen en: " + origen + ", con destino en: " + destino + ", con un total de Km recorridos de: " + KmRecorridos;
+		return "Ruta con origen en: " + origen + ", con destino en: " + destino + ", con un total de Km recorridos de: " + kmRecorridos;
 	}
 	
 	public String tipoRuta() {
-		if(KmRecorridos >= 0 && KmRecorridos <=150)
+		if(kmRecorridos >= 0 && kmRecorridos <=150)
 			return "Corta";
-		else if (KmRecorridos >= 150 && KmRecorridos <=300)
+		else if (kmRecorridos >= 150 && kmRecorridos <=300)
 			return "Media";
 		else
 			return "Larga";
@@ -167,7 +157,7 @@ public class Ruta {
 	}
 	
 	public double calcularConsumoEstimado() {
-		return vehiculoUsado.consumoLitros100km * (KmRecorridos/100);
+		return vehiculoUsado.consumoLitros100km * (kmRecorridos/100);
 	}
 
 }
