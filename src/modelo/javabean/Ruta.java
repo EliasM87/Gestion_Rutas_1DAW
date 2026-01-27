@@ -26,12 +26,19 @@ public class Ruta {
 		this.KmRecorridos = kmRecorridos;
 		this.cargaTransportadaKg = cargaTransportadaKg;
 		
-		//Cargo el vehiculo en el constructor
+		//Cargo la mercancia en el vehiculo en el constructor
 		if(this.vehiculoUsado instanceof Camion c)
 			c.setCargaOcupadaKg(cargaTransportadaKg);
 		else if(this.vehiculoUsado instanceof Furgoneta f)
 			f.setVolumenOcupadoM3(cargaTransportadaKg * 0.003);//Conversion a M3 ficticia
+		
+		//modifico kilometraje y consumo
+		modificarKilometrosYConsumoVehiculo();
+		
 			}
+		
+	
+	
 
 	public Ruta() {
 		super();
@@ -118,12 +125,22 @@ public class Ruta {
 		return idRuta == other.idRuta;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Ruta [idRuta=" + idRuta + ", fecha=" + fecha + ", origen=" + origen + ", destino=" + destino
-				+ ", vehiculoUsado=" + vehiculoUsado + ", empleado=" + empleado + ", KmRecorridos=" + KmRecorridos
-				+ ", cargaTransportadaKg=" + cargaTransportadaKg + "]";
+	    return "=== DETALLES DE LA RUTA ===\n" +
+	           "ID Ruta:             " + idRuta + "\n" +
+	           "Fecha:               " + fecha + "\n" +
+	           "Origen:              " + origen + "\n" +
+	           "Destino:             " + destino + "\n" +
+	           "Vehículo:            " + vehiculoUsado + "\n" +
+	           "Empleado:            " + empleado + "\n" +
+	           "Km Recorridos:       " + KmRecorridos + " km\n" +
+	           "Carga Transportada:  " + cargaTransportadaKg + " kg\n" +
+	           "===========================";
 	}
+	
+	
 	
 	public boolean isCargaCorrecta() {
 		return this.cargaTransportadaKg <= this.vehiculoUsado.cargaDisponible();
