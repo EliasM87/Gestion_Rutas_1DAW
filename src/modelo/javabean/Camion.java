@@ -15,10 +15,9 @@ public class Camion extends Vehiculo{
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 	}
 	public Camion(String matricula, String marca, String modelo, double kilometrosTotales, double consumoLitros100km,
-			double capacidadCargaKg, double cargaOcupadaKg, int numeroEjes) {
+			double capacidadCargaKg, int numeroEjes) {
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 		this.capacidadCargaKg = capacidadCargaKg;
-		this.cargaOcupadaKg = cargaOcupadaKg;
 		this.numeroEjes = numeroEjes;
 	}
 	

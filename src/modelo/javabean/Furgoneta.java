@@ -7,10 +7,9 @@ public class Furgoneta extends Vehiculo {
 	
 	
 	public Furgoneta(String matricula, String marca, String modelo, double kilometrosTotales, double consumoLitros100km,
-			double volumenCargaM3, double volumenOcupadoM3) {
+			double volumenCargaM3) {
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 		this.volumenCargaM3 = volumenCargaM3;
-		this.volumenOcupadoM3 = volumenOcupadoM3;
 	}
 
 

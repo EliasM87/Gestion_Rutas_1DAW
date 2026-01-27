@@ -25,8 +25,12 @@ public class Ruta {
 		this.empleado = empleado;
 		this.KmRecorridos = kmRecorridos;
 		this.cargaTransportadaKg = cargaTransportadaKg;
-			
-	}
+		
+		if(this.vehiculoUsado instanceof Camion c)
+			c.setCargaOcupadaKg(cargaTransportadaKg);
+		else if(this.vehiculoUsado instanceof Furgoneta f)
+			f.setVolumenOcupadoM3(cargaTransportadaKg * 0.003);
+			}
 
 	public Ruta() {
 		super();
@@ -121,20 +125,12 @@ public class Ruta {
 	}
 	
 	public boolean isCargaCorrecta() {
-		if (this.vehiculoUsado instanceof Camion) {
-			return this.cargaTransportadaKg <= this.vehiculoUsado.cargaDisponible();
-			}
-		else if(this.vehiculoUsado instanceof Furgoneta) {
-			double conversionKgaM3 = this.cargaTransportadaKg * 0.003; //conversion ficticia
-			return conversionKgaM3 <= this.vehiculoUsado.cargaDisponible();			
-			
-		}
-		return false;
+		return this.cargaTransportadaKg <= this.vehiculoUsado.cargaDisponible();
 	}
 	
 	public void modificarKilometrosYConsumoVehiculo() {
 		this.vehiculoUsado.aumentarKilometraje(KmRecorridos);
-		this.vehiculoUsado.modificarConsumoLitros100km();
+		this.vehiculoUsado.consumoLitros100km += this.getVehiculoUsado().getPorcentajeCarga()/20; //Aumenta 1L de consumo por cada 20% de carga
 	
 	}
 	

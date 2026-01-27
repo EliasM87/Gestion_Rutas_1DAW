@@ -70,7 +70,7 @@ public class GestionRutas implements IGestionRutas{
 		
 		Map<String,Long> totalKmVehiculo = new HashMap<String, Long>();
 		for (Ruta r: rutas) {
-			totalKmVehiculo.put(r.getVehiculoUsado().getMatricula(), (long) r.getVehiculoUsado().getKilometrosTotales());
+			totalKmVehiculo.merge(r.getVehiculoUsado().getMatricula(), (long) r.getVehiculoUsado().getKilometrosTotales(), Long::sum);
 		}
 		return totalKmVehiculo;
 	}
@@ -90,6 +90,7 @@ public class GestionRutas implements IGestionRutas{
 	public List<Ruta> rutasIntervaloFechas(LocalDate inicio, LocalDate fin) {
 
 		List<Ruta> rutasIntervaloFechas = new ArrayList<Ruta>();
+		
 		for (Ruta r : rutas) {
 			if (r.getFecha().isAfter(inicio) && r.getFecha().isBefore(fin))
 				rutasIntervaloFechas.add(r);
@@ -102,11 +103,12 @@ public class GestionRutas implements IGestionRutas{
 	public Map<String, Long> totalKmPorTipoVehiculo() {
 		
 		Map<String,Long> totalKmTipoVehiculo = new HashMap<String, Long>();
+		
 		for (Ruta r: rutas) {
 			if(r.getVehiculoUsado() instanceof Furgoneta) 
-				totalKmTipoVehiculo.put("FURGONETA", (long) r.getVehiculoUsado().getKilometrosTotales());
+				totalKmTipoVehiculo.merge("FURGONETA", (long) r.getVehiculoUsado().getKilometrosTotales(), Long::sum);
 			else
-				totalKmTipoVehiculo.put("CAMION", (long) r.getVehiculoUsado().getKilometrosTotales());
+				totalKmTipoVehiculo.merge("CAMION", (long) r.getVehiculoUsado().getKilometrosTotales(), Long::sum);
 		}
 		return totalKmTipoVehiculo;
 	}
