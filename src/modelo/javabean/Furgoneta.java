@@ -65,11 +65,6 @@ public class Furgoneta extends Vehiculo {
 	}
 
 
-	@Override
-	public void modificarConsumoLitros100km() {
-		this.consumoLitros100km += getPorcentajeCarga()/20;//aumenta 1L cada 20% de carga
-		
-	}
 
 
 

@@ -26,10 +26,11 @@ public class Ruta {
 		this.KmRecorridos = kmRecorridos;
 		this.cargaTransportadaKg = cargaTransportadaKg;
 		
+		//Cargo el vehiculo en el constructor
 		if(this.vehiculoUsado instanceof Camion c)
 			c.setCargaOcupadaKg(cargaTransportadaKg);
 		else if(this.vehiculoUsado instanceof Furgoneta f)
-			f.setVolumenOcupadoM3(cargaTransportadaKg * 0.003);
+			f.setVolumenOcupadoM3(cargaTransportadaKg * 0.003);//Conversion a M3 ficticia
 			}
 
 	public Ruta() {

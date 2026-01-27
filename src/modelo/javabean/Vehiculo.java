@@ -13,7 +13,7 @@ public abstract class Vehiculo {
 	public abstract double cargaDisponible();
 	public abstract double getPorcentajeCarga();
 	public abstract boolean isLleno();
-	public abstract void modificarConsumoLitros100km();
+	
 	
 	
 	public void aumentarKilometraje(double kilometros) {
