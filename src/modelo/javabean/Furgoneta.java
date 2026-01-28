@@ -48,7 +48,7 @@ public class Furgoneta extends Vehiculo {
 				"Kilometros totales: " + kilometrosTotales + "\n"+
 				"Consumo L/100:      " + consumoLitros100km + "\n"+
 				"Volumen de carga    " + volumenCargaM3 + "\n"+
-				"Volumen ocupado:    " + volumenOcupadoM3;			
+				"Volumen ocupado:    " + getPorcentajeCarga() + "%";			
 	
 	}
 

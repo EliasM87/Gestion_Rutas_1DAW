@@ -15,7 +15,7 @@ public class TestHerencia {
 		
 		cargaDatos();
 		
-		//listarTodos();
+		listarTodos();
 		//mostrarCarga();
 		//mostrarCargaDisponible();
 		

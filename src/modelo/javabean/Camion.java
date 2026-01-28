@@ -64,7 +64,7 @@ public class Camion extends Vehiculo{
 				"Kilometros totales: " + kilometrosTotales + "\n"+
 				"Consumo L/100:      " + consumoLitros100km + "\n"+
 				"Capacidad de carga: " + capacidadCargaKg + "\n"+
-				"Carga ocupada:      " + cargaOcupadaKg + "\n"+
+				"Carga ocupada:      " + getPorcentajeCarga() + "%" + "\n"+
 				"Numero Ejes:        " + numeroEjes;
 				
 				
