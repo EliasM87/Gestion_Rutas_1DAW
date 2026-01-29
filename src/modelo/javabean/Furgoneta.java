@@ -10,6 +10,7 @@ public class Furgoneta extends Vehiculo {
 			double volumenCargaM3) {
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 		this.volumenCargaM3 = volumenCargaM3;
+		this.tipo = "Furgoneta";
 	}
 
 
@@ -17,6 +18,8 @@ public class Furgoneta extends Vehiculo {
 			double consumoLitros100km) {
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 	}
+	
+
 
 
 	public double getVolumenCargaM3() {
@@ -61,7 +64,8 @@ public class Furgoneta extends Vehiculo {
 
 	@Override
 	public double getPorcentajeCarga() {
-		return (volumenOcupadoM3 / volumenCargaM3) * 100;
+		double porcentaje = (volumenOcupadoM3 / volumenCargaM3)*100;
+		return Math.floor(porcentaje * 10) / 10.0;
 	}
 
 

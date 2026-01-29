@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public abstract class Vehiculo {
 	
+	protected String tipo;
 	protected String matricula;
 	protected String marca;
 	protected String modelo;
@@ -35,6 +36,13 @@ public abstract class Vehiculo {
 		super();
 	}
 	
+	
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	public String getMatricula() {
 		return matricula;
 	}

@@ -127,5 +127,9 @@ public class GestionRutas implements IGestionRutas{
 		}
 		return totalKmTipoVehiculo;
 	}
+	
+	public List<Ruta> mostrarTodas(){
+		return this.rutas;
+	}
 
 }

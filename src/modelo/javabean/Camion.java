@@ -2,7 +2,6 @@ package modelo.javabean;
 
 public class Camion extends Vehiculo{
 	
-	
 	private double capacidadCargaKg;
 	private double cargaOcupadaKg;
 	private int numeroEjes;
@@ -19,6 +18,7 @@ public class Camion extends Vehiculo{
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 		this.capacidadCargaKg = capacidadCargaKg;
 		this.numeroEjes = numeroEjes;
+		this.tipo = "Camion";
 	}
 	
 	
@@ -46,7 +46,8 @@ public class Camion extends Vehiculo{
 	}
 	@Override
 	public double getPorcentajeCarga() {
-		return (cargaOcupadaKg / capacidadCargaKg)*100;
+		double porcentaje = (cargaOcupadaKg / capacidadCargaKg)*100;
+		return Math.floor(porcentaje * 10) / 10.0;
 	}
 	
 	@Override
@@ -69,6 +70,7 @@ public class Camion extends Vehiculo{
 				
 				
 	}
+	
 	
 	
 	
