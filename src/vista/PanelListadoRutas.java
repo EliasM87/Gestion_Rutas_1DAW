@@ -90,13 +90,13 @@ public class PanelListadoRutas extends JPanel {
             modeloTabla.addRow(new Object[]{
                     r.getIdRuta(),
                     r.getFecha(),
-                    r.getOrigen(),
-                    r.getDestino(),
-                    r.getEmpleado().getNombre(),
-                    r.getVehiculoUsado().getTipo(),
-                    r.getVehiculoUsado().getMatricula(),
+                    r.getOrigen().toUpperCase(),
+                    r.getDestino().toUpperCase(),
+                    r.getEmpleado().getNombre().toUpperCase(),
+                    r.getVehiculoUsado().getTipo().toUpperCase(),
+                    r.getVehiculoUsado().getMatricula().toUpperCase(),
                     r.getVehiculoUsado().getKilometrosTotales(),
-                    r.getVehiculoUsado().getPorcentajeCarga()
+                    r.getVehiculoUsado().getPorcentajeCarga() +"%"
             });
         }
     }
