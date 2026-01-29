@@ -74,11 +74,11 @@ public class PanelGestionEmpleados extends JPanel {
         JButton btnLimpiar = new JButton("🔄 Limpiar");
 
         btnAgregar.setBackground(new Color(76, 175, 80));
-        btnAgregar.setForeground(Color.WHITE);
+        btnAgregar.setForeground(Color.BLACK);
         btnModificar.setBackground(new Color(33, 150, 243));
-        btnModificar.setForeground(Color.WHITE);
+        btnModificar.setForeground(Color.BLACK);
         btnEliminar.setBackground(new Color(244, 67, 54));
-        btnEliminar.setForeground(Color.WHITE);
+        btnEliminar.setForeground(Color.BLACK);
 
         panelBotones.add(btnAgregar);
         panelBotones.add(btnModificar);

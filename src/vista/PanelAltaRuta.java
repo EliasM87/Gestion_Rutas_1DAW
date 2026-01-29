@@ -143,7 +143,7 @@ public class PanelAltaRuta extends JPanel {
         JButton btnRefrescar = new JButton("↻ Refrescar Listas");
 
         btnCrear.setBackground(new Color(76, 175, 80));
-        btnCrear.setForeground(Color.WHITE);
+        btnCrear.setForeground(Color.BLACK);
         btnCrear.setFont(new Font("Arial", Font.BOLD, 14));
         btnCrear.setPreferredSize(new Dimension(150, 35));
 
