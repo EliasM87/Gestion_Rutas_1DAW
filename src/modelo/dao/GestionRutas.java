@@ -7,18 +7,24 @@ import java.util.List;
 import java.util.Map;
 
 import modelo.javabean.Camion;
+import modelo.javabean.Empleado;
 import modelo.javabean.Furgoneta;
 import modelo.javabean.Ruta;
+import modelo.javabean.Vehiculo;
 
 public class GestionRutas implements IGestionRutas{
 	
 	
 	private List<Ruta> rutas;
+	private List<Empleado> empleados;
+	private List<Vehiculo> vehiculos;
 	
 	
 	public GestionRutas() {
 		super();
 		rutas = new ArrayList<Ruta>();
+		empleados = new ArrayList<Empleado>();
+		vehiculos = new ArrayList<Vehiculo>();
 		}
 
 	
@@ -130,6 +136,82 @@ public class GestionRutas implements IGestionRutas{
 	
 	public List<Ruta> mostrarTodas(){
 		return this.rutas;
+	}
+	
+	// ========== MÉTODOS DE GESTIÓN DE EMPLEADOS ==========
+	
+	public void addEmpleado(Empleado empleado) {
+		empleados.add(empleado);
+	}
+	
+	public void modificarEmpleado(String dniOriginal, Empleado empleadoNuevo) {
+		for (int i = 0; i < empleados.size(); i++) {
+			if (empleados.get(i).getDni().equals(dniOriginal)) {
+				empleados.set(i, empleadoNuevo);
+				// Actualizar también en las rutas si es necesario
+				for (Ruta r : rutas) {
+					if (r.getEmpleado().getDni().equals(dniOriginal)) {
+						r.setEmpleado(empleadoNuevo);
+					}
+				}
+				break;
+			}
+		}
+	}
+	
+	public void eliminarEmpleado(String dni) {
+		empleados.removeIf(e -> e.getDni().equals(dni));
+	}
+	
+	public Empleado buscarEmpleadoPorDni(String dni) {
+		for (Empleado e : empleados) {
+			if (e.getDni().equals(dni)) {
+				return e;
+			}
+		}
+		return null;
+	}
+	
+	public List<Empleado> obtenerTodosEmpleados() {
+		return new ArrayList<>(empleados);
+	}
+	
+	// ========== MÉTODOS DE GESTIÓN DE VEHÍCULOS ==========
+	
+	public void addVehiculo(Vehiculo vehiculo) {
+		vehiculos.add(vehiculo);
+	}
+	
+	public void modificarVehiculo(String matriculaOriginal, Vehiculo vehiculoNuevo) {
+		for (int i = 0; i < vehiculos.size(); i++) {
+			if (vehiculos.get(i).getMatricula().equals(matriculaOriginal)) {
+				vehiculos.set(i, vehiculoNuevo);
+				// Actualizar también en las rutas si es necesario
+				for (Ruta r : rutas) {
+					if (r.getVehiculoUsado().getMatricula().equals(matriculaOriginal)) {
+						r.setVehiculoUsado(vehiculoNuevo);
+					}
+				}
+				break;
+			}
+		}
+	}
+	
+	public void eliminarVehiculo(String matricula) {
+		vehiculos.removeIf(v -> v.getMatricula().equals(matricula));
+	}
+	
+	public Vehiculo buscarVehiculoPorMatricula(String matricula) {
+		for (Vehiculo v : vehiculos) {
+			if (v.getMatricula().equals(matricula)) {
+				return v;
+			}
+		}
+		return null;
+	}
+	
+	public List<Vehiculo> obtenerTodosVehiculos() {
+		return new ArrayList<>(vehiculos);
 	}
 
 }

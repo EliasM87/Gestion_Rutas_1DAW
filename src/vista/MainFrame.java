@@ -17,15 +17,18 @@ public class MainFrame extends JFrame {
     public MainFrame() {
 
         gestion = new GestionRutas();
-        cargarRutas();
+        cargarDatosIniciales();
 
-        setTitle("Sistema de Gestión de Rutas");
-        setSize(1000, 600);
+        setTitle("Sistema de Gestión de Rutas - Logística");
+        setSize(1200, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JTabbedPane pestañas = new JTabbedPane();
 
+        // Pestañas de gestión separadas
+        pestañas.addTab("👥 Gestión Empleados", new PanelGestionEmpleados(gestion));
+        pestañas.addTab("🚚 Gestión Vehículos", new PanelGestionVehiculos(gestion));
         pestañas.addTab("➕ Crear Ruta", new PanelAltaRuta(gestion));
         pestañas.addTab("🔍 Buscar Rutas", new PanelListadoRutas(gestion));
 
@@ -43,8 +46,22 @@ public class MainFrame extends JFrame {
         );
     }
     
-	public static void cargarRutas() {
+	public static void cargarDatosIniciales() {
 		
+		// Cargar empleados
+		Empleado emp1 = new Empleado("04356712G", "Pepito", "Mangas", "pepito@gmail.com", "H");
+		Empleado emp2 = new Empleado("83495960J", "Maria", "Santos", "m.santos@gmail.com", "M");
+		Empleado emp3 = new Empleado("62849500K", "Manolo", "Perez", "manolo@gmail.com", "H");
+		Empleado emp4 = new Empleado("89345875M", "Virginia", "Lambas", "virgi.lam@gmail.com", "M");
+		Empleado emp5 = new Empleado("83947639F", "Jesus", "Montes", "j.montes@gmail.com", "H");
+		
+		gestion.addEmpleado(emp1);
+		gestion.addEmpleado(emp2);
+		gestion.addEmpleado(emp3);
+		gestion.addEmpleado(emp4);
+		gestion.addEmpleado(emp5);
+		
+		// Cargar vehículos
 		Vehiculo cam1 = new Camion("7145GZM", "Volvo", "FH", 100000, 11, 15000, 8);
 		Vehiculo cam2 = new Camion("7688HVS", "Volvo", "FM", 13500, 9.8, 17000, 9);
 		Vehiculo cam3 = new Camion("0573KMS", "Mercedes", "Actros", 85000, 14.8, 10000, 10);
@@ -55,18 +72,26 @@ public class MainFrame extends JFrame {
 		Vehiculo furg3 = new Furgoneta("8734LKS", "Peugeot", "Partner", 125000, 9, 14);
 		Vehiculo furg4 = new Furgoneta("1765CDS", "Mercedes", "Citan", 210000, 11, 15);
 		Vehiculo furg5 = new Furgoneta("7854KVC", "Renault", "Kangoo", 180000, 9, 8);
-		Empleado emp1 = new Empleado("04356712G", "Pepito", "Mangas", "pepito@gmail.com", "h");
-		Empleado emp2 = new Empleado("83495960J", "Maria", "Santos", "m.santos@gmail.com", "M");
-		Empleado emp3 = new Empleado("62849500K", "Manolo", "Perez", "manolo@gmail.com", "h");
-		Empleado emp4 = new Empleado("89345875M", "Virginia", "Lambas", "virgi.lam@gmail.com", "M");
-		Empleado emp5 = new Empleado("83947639F", "Jesus", "Montes", "j.montes@gmail.com", "h");
 		
+		gestion.addVehiculo(cam1);
+		gestion.addVehiculo(cam2);
+		gestion.addVehiculo(cam3);
+		gestion.addVehiculo(cam4);
+		gestion.addVehiculo(cam5);
+		gestion.addVehiculo(furg1);
+		gestion.addVehiculo(furg2);
+		gestion.addVehiculo(furg3);
+		gestion.addVehiculo(furg4);
+		gestion.addVehiculo(furg5);
+		
+		// Cargar rutas de ejemplo
 		Ruta ruta1 = new Ruta(101, LocalDate.of(2024, 12, 01), "Madrid", "Barcelona", cam1, emp1, 650, 8000);
 		Ruta ruta2 = new Ruta(102, LocalDate.of(2025, 6, 10), "Sevilla", "Madrid", cam2, emp2, 550, 7000);
 		Ruta ruta3 = new Ruta(103, LocalDate.of(2025, 8, 12), "Zaragoza", "Malaga", furg1, emp3, 700, 1500);
 		Ruta ruta4 = new Ruta(104, LocalDate.of(2025, 02, 17), "Pontevedra", "Madrid", furg2, emp4, 500, 1800);
 		Ruta ruta5 = new Ruta(105, LocalDate.of(2025, 8, 5), "Murcia", "Toledo", cam3, emp5, 600, 9000);
 		Ruta ruta6 = new Ruta(106, LocalDate.of(2026, 01, 12), "Madrid", "Malaga", cam4, emp2, 520, 12000);
+		
 		gestion.addRuta(ruta1);
 		gestion.addRuta(ruta2);
 		gestion.addRuta(ruta3);
