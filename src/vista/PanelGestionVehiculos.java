@@ -12,6 +12,7 @@ public class PanelGestionVehiculos extends JPanel {
     private DefaultTableModel modeloTabla;
     private JTable tabla;
     private GestionRutas gestion;
+    private boolean cargandoDatos = false;  // Bandera para evitar limpiar campos al cargar
     
     // Campos comunes
     private JTextField txtMatricula;
@@ -136,11 +137,14 @@ public class PanelGestionVehiculos extends JPanel {
         lblEjes.setEnabled(esCamion);
         lblVolumen.setEnabled(!esCamion);
         
-        if (esCamion) {
-            txtVolumen.setText("");
-        } else {
-            txtCapacidad.setText("");
-            txtEjes.setText("");
+        // Solo limpiar campos si NO estamos cargando datos desde la tabla
+        if (!cargandoDatos) {
+            if (esCamion) {
+                txtVolumen.setText("");
+            } else {
+                txtCapacidad.setText("");
+                txtEjes.setText("");
+            }
         }
     }
 
@@ -362,9 +366,14 @@ public class PanelGestionVehiculos extends JPanel {
     private void cargarVehiculoEnFormulario() {
         int fila = tabla.getSelectedRow();
         if (fila != -1) {
+            cargandoDatos = true;  // Activar bandera
+            
             String tipo = (String) tabla.getValueAt(fila, 0);
+            
+            // Primero establecemos el tipo (esto habilita/deshabilita los campos correctos)
             comboTipo.setSelectedItem(tipo);
             
+            // Luego rellenamos los campos comunes
             txtMatricula.setText((String) tabla.getValueAt(fila, 1));
             txtMarca.setText((String) tabla.getValueAt(fila, 2));
             txtModelo.setText((String) tabla.getValueAt(fila, 3));
@@ -373,6 +382,7 @@ public class PanelGestionVehiculos extends JPanel {
             
             String detalles = (String) tabla.getValueAt(fila, 6);
             
+            // Rellenamos los campos específicos
             if (tipo.equals("Camión")) {
                 // Parsear detalles del camión
                 String[] partes = detalles.split(" - ");
@@ -384,6 +394,8 @@ public class PanelGestionVehiculos extends JPanel {
                 // Parsear detalles de la furgoneta
                 txtVolumen.setText(detalles.replaceAll("[^0-9.]", ""));
             }
+            
+            cargandoDatos = false;  // Desactivar bandera
         }
     }
 

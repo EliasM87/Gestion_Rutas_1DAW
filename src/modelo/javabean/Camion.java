@@ -18,7 +18,7 @@ public class Camion extends Vehiculo{
 		super(matricula, marca, modelo, kilometrosTotales, consumoLitros100km);
 		this.capacidadCargaKg = capacidadCargaKg;
 		this.numeroEjes = numeroEjes;
-		this.tipo = "Camion";
+		this.tipo = "Camión";
 	}
 	
 	

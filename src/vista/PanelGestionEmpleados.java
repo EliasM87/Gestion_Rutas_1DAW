@@ -294,7 +294,7 @@ public class PanelGestionEmpleados extends JPanel {
                 emp.getNombre(),
                 emp.getApellidos(),
                 emp.getEmail(),
-                emp.getGenero()
+                emp.literalGenero()
             });
         }
     }
